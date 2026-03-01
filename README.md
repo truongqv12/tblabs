@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/logo.png" alt="TP-LABS Logo" width="120">
+  <img src="assets/logo/tp-labs_pixel_lettermark_03.png" alt="TP-LABS Logo" width="120">
 </p>
 
 <h1 align="center">TP-LABS Desktop App</h1>
@@ -10,14 +10,15 @@
 
 <p align="center">
   Không cần click từng cái một. TP-LABS biến prompt thành hàng trăm ảnh và video AI chỉ trong vài phút.<br>
-  Nhân vật nhất quán, quản lý tài khoản tự động, chạy offline trên máy bạn.
+  Nhân vật nhất quán, nối video tuần tự, quản lý tài khoản tự động, chạy trên máy bạn.
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/phiên_bản-1.1.0-blue?style=flat-square" alt="v1.1.0">
+  <img src="https://img.shields.io/badge/phiên_bản-1.1.5-blue?style=flat-square" alt="v1.1.5">
   <img src="https://img.shields.io/badge/nền_tảng-Windows_10%2F11-0078D6?style=flat-square&logo=windows" alt="Windows">
   <img src="https://img.shields.io/badge/python-3.12-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python 3.12">
   <img src="https://img.shields.io/badge/UI-PySide6%20(Qt)-41CD52?style=flat-square&logo=qt&logoColor=white" alt="PySide6">
+  <img src="https://img.shields.io/badge/engine-Veo%203.1-10b981?style=flat-square" alt="Veo 3.1">
   <img src="https://img.shields.io/badge/giấy_phép-proprietary-lightgrey?style=flat-square" alt="License">
 </p>
 
@@ -31,17 +32,27 @@
 
 ![Tạo ảnh nhân vật nhất quán](assets/screenshot/char_to_image.png)
 
-### Tạo video từ khung hình
-
-> Chọn khung đầu + khung cuối, mô tả chuyển động — Veo 3.1 sẽ tạo video cho bạn. Hỗ trợ batch hàng loạt.
-
-![Tạo video từ khung hình](assets/screenshot/frametoimg.png)
-
 ### Tạo video nhân vật nhất quán
 
 > Kết hợp ảnh nhân vật với prompt video — tạo hàng loạt video giữ đúng phong cách và nhân vật.
 
 ![Tạo video nhân vật nhất quán](assets/screenshot/video_to_Image.png)
+
+### Nối khung hình tuần tự
+
+> Nhập nhiều prompt chuyển cảnh, mỗi prompt kèm ảnh tham chiếu — app tạo chuỗi video liền mạch.
+
+![Nối khung hình — nhập prompt](assets/screenshot/sequential_frame.png)
+
+> Theo dõi tiến độ từng prompt theo thời gian thực, xem trước video và ảnh input ngay trong bảng.
+
+![Nối khung hình — đang chạy](assets/screenshot/sequential_frame_run.png)
+
+### Tạo video từ khung hình
+
+> Chọn khung đầu + khung cuối, mô tả chuyển động — Veo 3.1 sẽ tạo video cho bạn. Hỗ trợ batch hàng loạt.
+
+![Tạo video từ khung hình](assets/screenshot/frametoimg.png)
 
 ---
 
@@ -57,10 +68,10 @@
 ### Yêu cầu hệ thống
 
 | Yêu cầu | Chi tiết |
-|----------|----------|
+| -------- | -------- |
 | **Hệ điều hành** | Windows 10/11 (64-bit) |
 | **RAM** | Tối thiểu 4 GB, khuyến nghị 8 GB |
-| **Ổ cứng** | ~500 MB cho app + trình duyệt |
+| **Ổ cứng** | ~616 MB cho app + trình duyệt |
 | **Mạng** | Cần kết nối Internet |
 
 ---
@@ -70,7 +81,7 @@
 ### Tạo ảnh AI hàng loạt
 
 - **Whisk Service** — tạo ảnh bất đồng bộ với retry và validation tự động
-- **Flow Service** — tạo ảnh với reCAPTCHA token flow và upload ảnh tham chiếu
+- **Flow Service** — tạo ảnh với upload ảnh tham chiếu và xử lý nâng cao
 - **Xử lý batch** — chạy hàng trăm prompt cùng lúc, giới hạn đồng thời thông minh tránh rate limit
 
 ### Ảnh nhân vật nhất quán
@@ -90,11 +101,16 @@
 - **Quy trình tự động** — gửi yêu cầu → theo dõi → tải về → lưu file
 - **Ghép video** — tích hợp FFmpeg để nối và xử lý hậu kỳ
 
+### Nối khung hình tuần tự *(Mới)*
+
+- Nhập nhiều prompt chuyển cảnh liên tiếp, mỗi cảnh kèm ảnh tham chiếu
+- App tạo video tuần tự liền mạch — xem trước ảnh input và tiến độ realtime
+- Kết quả: chuỗi video có nội dung liên kết từ đầu đến cuối
+
 ### Quản lý tài khoản & phiên
 
-- Tự động hóa trình duyệt qua Playwright (chế độ stealth)
 - Hỗ trợ nhiều tài khoản với phiên làm việc lưu trữ lâu dài
-- Tự động khôi phục phiên, quản lý cookie, đồng bộ header trình duyệt
+- Tự động khôi phục phiên, quản lý cookie
 - Kiểm tra tier/credit tài khoản Google Labs
 
 ### Thành viên & Gói đăng ký
@@ -104,11 +120,17 @@
 - Theo dõi trạng thái đơn hàng theo thời gian thực
 - **Phân quyền theo gói** — giới hạn tính năng và số luồng đồng thời theo tier
 
+### Quản lý task nâng cao *(Mới)*
+
+- Đặt tên riêng cho từng task, lọc theo loại trang (ảnh/video/character)
+- Tìm kiếm nhanh, xem tiến độ bằng thanh progress
+- Xóa task kèm dọn sạch thư mục output (có xác nhận)
+
 ---
 
 ## Kiến trúc
 
-```
+```text
 tplab/
 ├── tplab.exe              # File chạy chính
 ├── playwright/            # Trình duyệt Chromium đi kèm
@@ -125,9 +147,9 @@ tplab/
 ### Công nghệ
 
 | Thành phần | Công nghệ |
-|------------|-----------|
+| ---------- | --------- |
 | **Giao diện** | PySide6 (Qt for Python) |
-| **Trình duyệt** | Playwright + Chromium (stealth) |
+| **Trình duyệt** | Playwright + Chromium |
 | **HTTP Client** | httpx (bất đồng bộ) |
 | **Cơ sở dữ liệu** | SQLite (lưu trữ task cục bộ) |
 | **Data Models** | Pydantic v2 |
@@ -154,7 +176,7 @@ tplab/
 - Không ghi log dữ liệu nhạy cảm (token redaction)
 - Tách biệt hoàn toàn domain xác thực khách hàng với phiên trình duyệt
 - Refresh token serialized — tránh race condition khi rotate
-- Device binding qua SHA256 fingerprint
+- Xác thực gắn liền thiết bị — mỗi máy 1 phiên duy nhất
 
 ---
 
@@ -171,7 +193,7 @@ Hỗ trợ **Dark/Light theme** — bảng màu Tailwind Slate + Blue:
 
 ## Lịch sử thay đổi
 
-Xem [CHANGELOG](docs/project-changelog.md) để theo dõi lịch sử phiên bản.
+Xem [CHANGELOG](CHANGELOG.md) để theo dõi lịch sử phiên bản.
 
 ---
 

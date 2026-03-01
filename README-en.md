@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/logo.png" alt="TP-LABS Logo" width="120">
+  <img src="assets/logo/tp-labs_pixel_lettermark_03.png" alt="TP-LABS Logo" width="120">
 </p>
 
 <h1 align="center">TP-LABS Desktop App</h1>
@@ -10,14 +10,15 @@
 
 <p align="center">
   No more one-by-one clicking. TP-LABS turns your prompts into hundreds of AI images and videos in minutes.<br>
-  Character-consistent generation, automated account management, runs entirely offline on your machine.
+  Character-consistent generation, sequential video stitching, automated account management.
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-1.1.0-blue?style=flat-square" alt="v1.1.0">
+  <img src="https://img.shields.io/badge/version-1.1.5-blue?style=flat-square" alt="v1.1.5">
   <img src="https://img.shields.io/badge/platform-Windows_10%2F11-0078D6?style=flat-square&logo=windows" alt="Windows">
   <img src="https://img.shields.io/badge/python-3.12-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python 3.12">
   <img src="https://img.shields.io/badge/UI-PySide6%20(Qt)-41CD52?style=flat-square&logo=qt&logoColor=white" alt="PySide6">
+  <img src="https://img.shields.io/badge/engine-Veo%203.1-10b981?style=flat-square" alt="Veo 3.1">
   <img src="https://img.shields.io/badge/license-proprietary-lightgrey?style=flat-square" alt="License">
 </p>
 
@@ -31,17 +32,27 @@
 
 ![Character-Consistent Image Generation](assets/screenshot/char_to_image.png)
 
-### Frame-to-Video Generation
-
-> Select start frame + end frame, describe the motion — Veo 3.1 generates the video. Supports batch processing.
-
-![Frame-to-Video Generation](assets/screenshot/frametoimg.png)
-
 ### Character-Consistent Video Generation
 
 > Combine character images with video prompts — batch-generate videos while keeping style and characters consistent.
 
 ![Character-Consistent Video Generation](assets/screenshot/video_to_Image.png)
+
+### Sequential Frame Stitching
+
+> Enter multiple transition prompts with reference images — the app creates a seamless video sequence.
+
+![Sequential Frame — Input](assets/screenshot/sequential_frame.png)
+
+> Track progress per prompt in real time, preview video and input images right in the table.
+
+![Sequential Frame — Running](assets/screenshot/sequential_frame_run.png)
+
+### Frame-to-Video Generation
+
+> Select start frame + end frame, describe the motion — Veo 3.1 generates the video. Supports batch processing.
+
+![Frame-to-Video Generation](assets/screenshot/frametoimg.png)
 
 ---
 
@@ -57,10 +68,10 @@
 ### System Requirements
 
 | Requirement | Details |
-|-------------|---------|
+| ----------- | ------- |
 | **OS** | Windows 10/11 (64-bit) |
 | **RAM** | 4 GB minimum, 8 GB recommended |
-| **Disk** | ~500 MB for the app + browser |
+| **Disk** | ~616 MB for the app + browser |
 | **Network** | Internet connection required |
 
 ---
@@ -70,7 +81,7 @@
 ### Batch AI Image Generation
 
 - **Whisk Service** — async image generation with automatic retry and validation
-- **Flow Service** — image generation with reCAPTCHA token flow and reference image upload
+- **Flow Service** — image generation with reference image upload and advanced processing
 - **Batch Processing** — run hundreds of prompts concurrently with smart throttling to avoid rate limits
 
 ### Character-Consistent Images
@@ -90,11 +101,16 @@
 - **Full Lifecycle** — submit → poll → download → save, fully automated
 - **Video Concatenation** — built-in FFmpeg for merging and post-processing
 
+### Sequential Frame Stitching *(New)*
+
+- Enter multiple transition prompts in sequence, each with reference images
+- App generates seamless sequential video — preview inputs and track progress in real time
+- Result: a continuous video chain with connected content from start to finish
+
 ### Account & Session Management
 
-- Playwright-based browser automation with stealth mode
 - Multi-account support with persistent sessions
-- Automatic session recovery, cookie management, and browser header sync
+- Automatic session recovery and cookie management
 - Google Labs account tier/credit status checking
 
 ### Membership & Subscription
@@ -104,11 +120,17 @@
 - Real-time order status tracking
 - **Tier-based feature gating** — features and concurrency limits enforced per subscription tier
 
+### Advanced Task Management *(New)*
+
+- Custom naming for each task, filter by page type (image/video/character)
+- Quick search, real-time progress bars
+- Delete tasks with automatic output folder cleanup (with confirmation)
+
 ---
 
 ## Architecture
 
-```
+```text
 tplab/
 ├── tplab.exe              # Main executable
 ├── playwright/            # Bundled Chromium browser + driver
@@ -125,9 +147,9 @@ tplab/
 ### Tech Stack
 
 | Component | Technology |
-|-----------|-----------|
+| --------- | ---------- |
 | **UI Framework** | PySide6 (Qt for Python) |
-| **Browser Engine** | Playwright + Chromium (stealth) |
+| **Browser Engine** | Playwright + Chromium |
 | **HTTP Client** | httpx (async) |
 | **Database** | SQLite (local task persistence) |
 | **Data Models** | Pydantic v2 |
@@ -150,11 +172,11 @@ tplab/
 
 ## Security
 
-- Auth tokens stored securely via Windows DPAPI (`CustomerTokenStore`)
+- Auth tokens stored securely via Windows DPAPI
 - No sensitive data logged (token redaction)
 - Isolated customer auth domain (separate from browser sessions)
 - Serialized refresh token rotation — no race conditions
-- Device binding via SHA256 fingerprint
+- Device-bound authentication — one session per machine
 
 ---
 
@@ -171,7 +193,7 @@ Supports **Dark/Light themes** — Tailwind Slate + Blue palette:
 
 ## Changelog
 
-See [CHANGELOG](docs/project-changelog.md) for version history and release notes.
+See [CHANGELOG](CHANGELOG.md) for version history and release notes.
 
 ---
 
