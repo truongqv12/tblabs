@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/logo/tp-labs_pixel_lettermark_03.png" alt="TP-LABS Logo" width="120">
+  <img src="assets/logo/logo.png" alt="TP-LABS Logo" width="120">
 </p>
 
 <h1 align="center">TP-LABS Desktop App</h1>
