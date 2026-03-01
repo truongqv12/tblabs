@@ -2,15 +2,15 @@
   <img src="assets/logo.png" alt="TP-LABS Logo" width="120">
 </p>
 
-<h1 align="center">🧪 TP-LABS Desktop App</h1>
+<h1 align="center">TP-LABS Desktop App</h1>
 
 <p align="center">
-  <strong>Tạo ảnh & video AI hàng loạt — tự động hoàn toàn trên Windows</strong>
+  <strong>Tạo hàng trăm ảnh & video AI cùng lúc — tự động hoàn toàn trên Windows</strong>
 </p>
 
 <p align="center">
-  Biến prompt thành hàng trăm ảnh và video AI chỉ trong vài click.<br>
-  Tự động hóa Google Labs — quản lý tài khoản, tạo ảnh nhân vật nhất quán, render video — tất cả offline trên máy bạn.
+  Không cần click từng cái một. TP-LABS biến prompt thành hàng trăm ảnh và video AI chỉ trong vài phút.<br>
+  Nhân vật nhất quán, quản lý tài khoản tự động, chạy offline trên máy bạn.
 </p>
 
 <p align="center">
@@ -23,21 +23,29 @@
 
 ---
 
-## 📖 Mục lục
+## Ảnh chụp màn hình
 
-- [Tải về & Bắt đầu ngay](#-tải-về--bắt-đầu-ngay)
-- [Tính năng chính](#-tính-năng-chính)
-- [Ảnh chụp màn hình](#-ảnh-chụp-màn-hình)
-- [Kiến trúc](#️-kiến-trúc)
-- [Hiệu năng](#-hiệu-năng)
-- [Bảo mật](#-bảo-mật)
-- [Giao diện](#-giao-diện)
-- [Lịch sử thay đổi](#-lịch-sử-thay-đổi)
-- [Hỗ trợ](#-hỗ-trợ)
+### Tạo ảnh nhân vật nhất quán
+
+> Dùng cú pháp `@tên` để giữ nhân vật đồng nhất qua hàng trăm ảnh — upload 1 lần, tái sử dụng mãi mãi.
+
+![Tạo ảnh nhân vật nhất quán](assets/screenshot/char_to_image.png)
+
+### Tạo video từ khung hình
+
+> Chọn khung đầu + khung cuối, mô tả chuyển động — Veo 3.1 sẽ tạo video cho bạn. Hỗ trợ batch hàng loạt.
+
+![Tạo video từ khung hình](assets/screenshot/frametoimg.png)
+
+### Tạo video nhân vật nhất quán
+
+> Kết hợp ảnh nhân vật với prompt video — tạo hàng loạt video giữ đúng phong cách và nhân vật.
+
+![Tạo video nhân vật nhất quán](assets/screenshot/video_to_Image.png)
 
 ---
 
-## 🚀 Tải về & Bắt đầu ngay
+## Tải về & Bắt đầu ngay
 
 1. Truy cập trang [**Releases**](../../releases)
 2. Tải file `.zip` phiên bản mới nhất
@@ -57,65 +65,48 @@
 
 ---
 
-## ✨ Tính năng chính
+## Tính năng chính
 
-### 🖼️ Tạo ảnh AI
+### Tạo ảnh AI hàng loạt
 
 - **Whisk Service** — tạo ảnh bất đồng bộ với retry và validation tự động
 - **Flow Service** — tạo ảnh với reCAPTCHA token flow và upload ảnh tham chiếu
-- **Xử lý hàng loạt** — chạy hàng trăm prompt cùng lúc với giới hạn đồng thời thông minh
+- **Xử lý batch** — chạy hàng trăm prompt cùng lúc, giới hạn đồng thời thông minh tránh rate limit
 
-### 🎭 Tạo ảnh nhân vật nhất quán
+### Ảnh nhân vật nhất quán
 
 - Cú pháp `@tên` trong prompt để tham chiếu nhân vật
 - Upload ảnh nhân vật 1 lần — tái sử dụng cho toàn bộ prompt trong task
 - Autocomplete khi gõ `@` — nhanh và chính xác
 
-### 🎬 Tạo video AI
+### Tạo video AI
 
 - **3 chế độ tạo video:**
   - `Văn bản → Video` — tạo video từ mô tả văn bản
   - `Ảnh tham chiếu → Video` — dùng ảnh để định hướng phong cách video
-  - `Khung hình → Video` — tạo video theo từng khung hình
+  - `Khung hình → Video` — chọn khung đầu + khung cuối, mô tả chuyển động
 - **Video nhân vật nhất quán** — kết hợp `@tên` với video, giữ nhân vật đồng nhất
 - **Video từ thư mục ảnh** — quét thư mục, ánh xạ ảnh sang prompt, tạo video hàng loạt
 - **Quy trình tự động** — gửi yêu cầu → theo dõi → tải về → lưu file
 - **Ghép video** — tích hợp FFmpeg để nối và xử lý hậu kỳ
 
-### 👤 Quản lý tài khoản & phiên
+### Quản lý tài khoản & phiên
 
 - Tự động hóa trình duyệt qua Playwright (chế độ stealth)
 - Hỗ trợ nhiều tài khoản với phiên làm việc lưu trữ lâu dài
 - Tự động khôi phục phiên, quản lý cookie, đồng bộ header trình duyệt
 - Kiểm tra tier/credit tài khoản Google Labs
 
-### 💳 Thành viên & Gói đăng ký
+### Thành viên & Gói đăng ký
 
 - Đăng nhập bằng Google Token hoặc License Key
-- Xem và mua gói thành viên — thanh toán QR qua SePay
+- Mua gói thành viên — thanh toán QR qua SePay
 - Theo dõi trạng thái đơn hàng theo thời gian thực
-- Đồng bộ gói đăng ký từ server khi khởi động
 - **Phân quyền theo gói** — giới hạn tính năng và số luồng đồng thời theo tier
 
 ---
 
-## 📸 Ảnh chụp màn hình
-
-> _Sẽ cập nhật sớm_
-
-<!--
-Bỏ comment khi có ảnh:
-| Tính năng | Xem trước |
-|-----------|-----------|
-| Tạo ảnh | ![Tạo ảnh](screenshots/image-creator.png) |
-| Ảnh nhân vật | ![Ảnh nhân vật](screenshots/character-image-creator.png) |
-| Tạo video | ![Tạo video](screenshots/video-creator.png) |
-| Quản lý tài khoản | ![Quản lý tài khoản](screenshots/account-manager.png) |
--->
-
----
-
-## 🏗️ Kiến trúc
+## Kiến trúc
 
 ```
 tplab/
@@ -141,12 +132,12 @@ tplab/
 | **Cơ sở dữ liệu** | SQLite (lưu trữ task cục bộ) |
 | **Data Models** | Pydantic v2 |
 | **Xử lý video** | FFmpeg (ghép nối + hậu kỳ) |
-| **AI Models** | Google Whisk, Flow, Veo (video) |
+| **AI Models** | Google Whisk, Flow, Veo 3.1 |
 | **Đóng gói** | Nuitka (Python → native .exe) |
 
 ---
 
-## ⚡ Hiệu năng
+## Hiệu năng
 
 - **Giới hạn đồng thời** — semaphore throttle, tránh rate limit API
 - **Giao diện mượt mà** — mọi tác vụ nặng chạy trên worker thread riêng
@@ -157,7 +148,7 @@ tplab/
 
 ---
 
-## 🔐 Bảo mật
+## Bảo mật
 
 - Token lưu trữ an toàn qua Windows DPAPI (`CustomerTokenStore`)
 - Không ghi log dữ liệu nhạy cảm (token redaction)
@@ -167,38 +158,38 @@ tplab/
 
 ---
 
-## 🎨 Giao diện
+## Giao diện
 
 Hỗ trợ **Dark/Light theme** — bảng màu Tailwind Slate + Blue:
 
-- 🌑 Nền tối (`#0f172a` / `#1e293b`) — giảm mỏi mắt
-- 🔵 Màu nhấn xanh dương (`#3b82f6`) — phần tử tương tác
-- ✅ Đạt chuẩn WCAG AA+ về độ tương phản
-- 🎯 Hiệu ứng chuyển tiếp mượt mà 200ms
+- Nền tối (`#0f172a` / `#1e293b`) — giảm mỏi mắt
+- Màu nhấn xanh dương (`#3b82f6`) — phần tử tương tác
+- Đạt chuẩn WCAG AA+ về độ tương phản
+- Hiệu ứng chuyển tiếp mượt mà 200ms
 
 ---
 
-## 📋 Lịch sử thay đổi
+## Lịch sử thay đổi
 
 Xem [CHANGELOG](docs/project-changelog.md) để theo dõi lịch sử phiên bản.
 
 ---
 
-## 🤝 Hỗ trợ
+## Hỗ trợ
 
 Nếu gặp vấn đề hoặc có câu hỏi:
 
-- 📧 Liên hệ đội phát triển
-- 🐛 Tạo issue trong repository này
+- Liên hệ đội phát triển
+- Tạo issue trong repository này
 
 ---
 
-## 📄 Giấy phép
+## Giấy phép
 
 Phần mềm độc quyền. Bảo lưu mọi quyền.
 
 ---
 
 <p align="center">
-  <sub>Được xây dựng với ❤️ bằng Python, PySide6 và Playwright</sub>
+  <sub>Được xây dựng bằng Python, PySide6 và Playwright</sub>
 </p>

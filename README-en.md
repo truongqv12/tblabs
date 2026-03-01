@@ -2,15 +2,15 @@
   <img src="assets/logo.png" alt="TP-LABS Logo" width="120">
 </p>
 
-<h1 align="center">🧪 TP-LABS Desktop App</h1>
+<h1 align="center">TP-LABS Desktop App</h1>
 
 <p align="center">
-  <strong>Batch AI Image & Video Generation — Fully Automated on Windows</strong>
+  <strong>Batch-generate hundreds of AI images & videos — fully automated on Windows</strong>
 </p>
 
 <p align="center">
-  Turn prompts into hundreds of AI images and videos in just a few clicks.<br>
-  Automate Google Labs workflows — manage accounts, generate character-consistent images, render videos — all locally on your machine.
+  No more one-by-one clicking. TP-LABS turns your prompts into hundreds of AI images and videos in minutes.<br>
+  Character-consistent generation, automated account management, runs entirely offline on your machine.
 </p>
 
 <p align="center">
@@ -23,33 +23,41 @@
 
 ---
 
-## 📖 Table of Contents
+## Screenshots
 
-- [Download & Get Started](#-download--get-started)
-- [Key Features](#-key-features)
-- [Screenshots](#-screenshots)
-- [Architecture](#️-architecture)
-- [Performance](#-performance)
-- [Security](#-security)
-- [Design](#-design)
-- [Changelog](#-changelog)
-- [Support](#-support)
+### Character-Consistent Image Generation
+
+> Use `@name` syntax to keep characters unified across hundreds of images — upload once, reuse forever.
+
+![Character-Consistent Image Generation](assets/screenshot/char_to_image.png)
+
+### Frame-to-Video Generation
+
+> Select start frame + end frame, describe the motion — Veo 3.1 generates the video. Supports batch processing.
+
+![Frame-to-Video Generation](assets/screenshot/frametoimg.png)
+
+### Character-Consistent Video Generation
+
+> Combine character images with video prompts — batch-generate videos while keeping style and characters consistent.
+
+![Character-Consistent Video Generation](assets/screenshot/video_to_Image.png)
 
 ---
 
-## 🚀 Download & Get Started
+## Download & Get Started
 
 1. Go to the [**Releases**](../../releases) page
 2. Download the latest `.zip` archive
 3. Extract to any folder
 4. Run **`tplab.exe`** — done!
 
-> **No Python installation required.** The release is a fully standalone executable with all dependencies bundled.
+> **No Python installation required.** The release is fully standalone with all dependencies bundled.
 
 ### System Requirements
 
 | Requirement | Details |
-| ----------- | ------- |
+|-------------|---------|
 | **OS** | Windows 10/11 (64-bit) |
 | **RAM** | 4 GB minimum, 8 GB recommended |
 | **Disk** | ~500 MB for the app + browser |
@@ -57,67 +65,50 @@
 
 ---
 
-## ✨ Key Features
+## Key Features
 
-### 🖼️ AI Image Generation
+### Batch AI Image Generation
 
 - **Whisk Service** — async image generation with automatic retry and validation
 - **Flow Service** — image generation with reCAPTCHA token flow and reference image upload
-- **Batch Processing** — run hundreds of prompts concurrently with smart semaphore-based throttling
+- **Batch Processing** — run hundreds of prompts concurrently with smart throttling to avoid rate limits
 
-### 🎭 Character-Consistent Image Generation
+### Character-Consistent Images
 
 - `@name` syntax in prompts to reference characters
 - Upload character images once — reused across all prompts in a task
 - Autocomplete when typing `@` — fast and accurate
 
-### 🎬 AI Video Generation
+### AI Video Generation
 
 - **3 Generation Modes:**
   - `Text → Video` — generate video from text descriptions
   - `Reference → Video` — use reference images to guide video style
-  - `Frame → Video` — frame-by-frame video generation
-- **Character-Consistent Video** — combine `@name` with video generation for unified characters
+  - `Frame → Video` — select start + end frames, describe the motion
+- **Character-Consistent Video** — combine `@name` with video for unified characters
 - **Batch Video from Image Folder** — scan folder, map images to prompts, generate videos in bulk
 - **Full Lifecycle** — submit → poll → download → save, fully automated
 - **Video Concatenation** — built-in FFmpeg for merging and post-processing
 
-### 👤 Account & Session Management
+### Account & Session Management
 
 - Playwright-based browser automation with stealth mode
 - Multi-account support with persistent sessions
 - Automatic session recovery, cookie management, and browser header sync
 - Google Labs account tier/credit status checking
 
-### 💳 Membership & Subscription
+### Membership & Subscription
 
 - Google Token / License Key authentication
-- Membership tier display and purchase — QR payment via SePay
-- Real-time order status polling
-- Subscription sync from server on startup
+- Purchase membership tiers — QR payment via SePay
+- Real-time order status tracking
 - **Tier-based feature gating** — features and concurrency limits enforced per subscription tier
 
 ---
 
-## 📸 Screenshots
+## Architecture
 
-> _Screenshots coming soon_
-
-<!--
-Uncomment when screenshots are available:
-| Feature | Preview |
-| ------- | ------- |
-| Image Creator | ![Image Creator](screenshots/image-creator.png) |
-| Character Images | ![Character Images](screenshots/character-image-creator.png) |
-| Video Creator | ![Video Creator](screenshots/video-creator.png) |
-| Account Manager | ![Account Manager](screenshots/account-manager.png) |
--->
-
----
-
-## 🏗️ Architecture
-
-```text
+```
 tplab/
 ├── tplab.exe              # Main executable
 ├── playwright/            # Bundled Chromium browser + driver
@@ -134,19 +125,19 @@ tplab/
 ### Tech Stack
 
 | Component | Technology |
-| --------- | ---------- |
+|-----------|-----------|
 | **UI Framework** | PySide6 (Qt for Python) |
 | **Browser Engine** | Playwright + Chromium (stealth) |
 | **HTTP Client** | httpx (async) |
 | **Database** | SQLite (local task persistence) |
 | **Data Models** | Pydantic v2 |
 | **Video Processing** | FFmpeg (concat + post-processing) |
-| **AI Models** | Google Whisk, Flow, Veo (video) |
+| **AI Models** | Google Whisk, Flow, Veo 3.1 |
 | **Compiler** | Nuitka (Python → native executable) |
 
 ---
 
-## ⚡ Performance
+## Performance
 
 - **Bounded Concurrency** — semaphore throttling prevents API rate limiting
 - **Non-blocking UI** — all long-running operations run on async worker threads
@@ -157,7 +148,7 @@ tplab/
 
 ---
 
-## 🔐 Security
+## Security
 
 - Auth tokens stored securely via Windows DPAPI (`CustomerTokenStore`)
 - No sensitive data logged (token redaction)
@@ -167,38 +158,38 @@ tplab/
 
 ---
 
-## 🎨 Design
+## Design
 
 Supports **Dark/Light themes** — Tailwind Slate + Blue palette:
 
-- 🌑 Dark backgrounds (`#0f172a` / `#1e293b`) for reduced eye strain
-- 🔵 Blue accent colors (`#3b82f6`) for interactive elements
-- ✅ WCAG AA+ compliant text contrast
-- 🎯 Smooth 200ms transitions and hover effects
+- Dark backgrounds (`#0f172a` / `#1e293b`) for reduced eye strain
+- Blue accent colors (`#3b82f6`) for interactive elements
+- WCAG AA+ compliant text contrast
+- Smooth 200ms transitions and hover effects
 
 ---
 
-## 📋 Changelog
+## Changelog
 
 See [CHANGELOG](docs/project-changelog.md) for version history and release notes.
 
 ---
 
-## 🤝 Support
+## Support
 
 If you encounter any issues or have questions:
 
-- 📧 Contact the development team
-- 🐛 Open an issue in this repository
+- Contact the development team
+- Open an issue in this repository
 
 ---
 
-## 📄 License
+## License
 
 This software is proprietary. All rights reserved.
 
 ---
 
 <p align="center">
-  <sub>Built with ❤️ using Python, PySide6, and Playwright</sub>
+  <sub>Built with Python, PySide6, and Playwright</sub>
 </p>
